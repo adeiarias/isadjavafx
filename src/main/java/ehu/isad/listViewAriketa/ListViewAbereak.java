@@ -1,4 +1,4 @@
-package ehu.isad;
+package ehu.isad.listViewAriketa;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -9,12 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
-import javax.sql.XAConnectionBuilder;
-import java.awt.font.ImageGraphicAttribute;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class AriketaAbereak extends Application{
+public class ListViewAbereak extends Application{
 
     private Map<String, List<Argazki>> bildumaMap;
     ListView listViewOfArgazki = new ListView();

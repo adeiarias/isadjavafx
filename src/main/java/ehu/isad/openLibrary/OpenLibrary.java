@@ -1,6 +1,7 @@
-package ehu.isad;
+package ehu.isad.openLibrary;
 
 import com.google.gson.Gson;
+import ehu.isad.openLibrary.Liburua;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-public class liburakAriketa extends Application{
+public class OpenLibrary extends Application{
 
     private Liburua liburua = new Liburua();
     private HashMap<String, String> mapa;

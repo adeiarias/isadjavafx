@@ -1,33 +1,24 @@
-package ehu.isad;
+package ehu.isad.ariketaIrudi1;
 
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import com.google.gson.Gson;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
+
 
 public class ComboBoxIrudiak extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("IRUDIEN TRATAMENDUAREN");
-        InputStream is = getClass().getResourceAsStream("/índice.jpeg");
+        InputStream is = getClass().getResourceAsStream("/elefantea.jpeg");
         BufferedImage reader = ImageIO.read(is);
         Image image = SwingFXUtils.toFXImage(reader,null);
         ImageView imageView = new ImageView(image);

@@ -1,4 +1,4 @@
-package ehu.isad;
+package ehu.isad.kriptoTxanpon;
 
 public class Txanpona {
     int trade_id;
