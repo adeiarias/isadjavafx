@@ -4,12 +4,10 @@ import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,6 +22,7 @@ public class liburakAriketa extends Application{
 
     private Liburua liburua = new Liburua();
     private HashMap<String, String> mapa;
+    Label izenburua,orriak,argitaletxea;
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -43,18 +42,24 @@ public class liburakAriketa extends Application{
         mapa.put("Data Algorithms","9781491906187");
 
         //LABELAK SORTUKO DIRA DATUAK BISTARATZEKO
-        Label izenburua = new Label("IZENBURUA");
-        Label orriak = new Label("ORRIALDE KOPURUA");
-        Label argitaletxea = new Label("ARGITALETXEA(K)");
-
-        liburuarenDatuakHasieratu("9781491906187");
+        izenburua = new Label("IZENBURUA");
+        orriak = new Label("ORRIALDE KOPURUA");
+        argitaletxea = new Label("ARGITALETXEA(K)");
 
         comboBox.setOnAction(e -> {
-
+            String izena = comboBox.getValue().toString();
+            String isbn = mapa.get(izena);
+            try {
+                liburuarenDatuakHasieratu(isbn);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            labelakEguneratu();
         });
 
         VBox vbox = new VBox(comboBox,izenburua,orriak,argitaletxea);
-        Scene scene = new Scene(vbox, 200, 120);
+        vbox.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(vbox, 400, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -80,6 +85,22 @@ public class liburakAriketa extends Application{
         Gson gson = new Gson();
         liburua = gson.fromJson(helburua, Liburua.class);
         in.close();
-        System.out.println(liburua.getTitle());
+    }
+
+    public void labelakEguneratu(){
+        String izen = liburua.getTitle();
+        String orr = liburua.getNumber_of_pages();
+        String[] argitaletxe = liburua.getPublishers();
+        izenburua.setText(izen);
+        orriak.setText(orr);
+        String argi = null;
+        for(int i = 0; i < argitaletxe.length; i++){
+            if(argi == null){
+                argi = argitaletxe[i];
+            }else{
+                argi = argi +", "+argitaletxe[i];
+            }
+        }
+        argitaletxea.setText(argi);
     }
 }
