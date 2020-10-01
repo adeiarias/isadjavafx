@@ -12,6 +12,10 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.7'
 }
 
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
+
 sourceCompatibility = 11
 targetCompatibility = 11
 
@@ -19,12 +23,13 @@ version = '0.0.1'
 group = 'ehu.isad'
 
 // ext.moduleName = 'gradlejavafxhelloworld'
-mainClassName = "$moduleName/ehu.isad.App"
+mainClassName = "$moduleName/ehu.isad.liburakAriketa"
 
 
 javafx {
     version = "12"
-    modules = [ ]
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing', 'javafx.web']
+
 }
 
 
@@ -33,6 +38,10 @@ repositories {
 }
 
 def newArgs = [ '--add-exports','java.desktop/com.apple.eawt=ALL-UNNAMED',]
+
+dependencies {
+    implementation 'junit:junit:4.12'
+}
 
 run {
     inputs.property('moduleName', moduleName)
