@@ -1,8 +1,9 @@
-package ehu.isad.ariketaIrudi1;
+package ehu.isad;
 
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,13 +18,16 @@ public class ComboBoxIrudiak extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         primaryStage.setTitle("IRUDIEN TRATAMENDUAREN");
+
         InputStream is = getClass().getResourceAsStream("/elefantea.jpeg");
         BufferedImage reader = ImageIO.read(is);
         Image image = SwingFXUtils.toFXImage(reader,null);
         ImageView imageView = new ImageView(image);
 
         VBox vbox = new VBox(imageView);
+        vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(10,0,0,0));
         Scene scene = new Scene(vbox, 200, 120);
         primaryStage.setScene(scene);

@@ -1,4 +1,4 @@
-package ehu.isad.openLibrary;
+package ehu.isad;
 
 import java.util.Arrays;
 

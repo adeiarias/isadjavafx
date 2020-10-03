@@ -1,4 +1,4 @@
-package ehu.isad.listViewAriketa;
+package ehu.isad;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -20,15 +20,17 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ListViewAbereak extends Application{
+public class ListViewAbereLandareFruta extends Application{
 
-    private Map<String, List<Argazki>> bildumaMap;
+    private Map<String, List<Argazki>> bildumaMap;//HashMap honetan, abere,landare eta fruta motak gordeko ditugu
     ListView listViewOfArgazki = new ListView();
     ImageView imageView = new ImageView();
-    ObservableList<Argazki> argazkiList;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        primaryStage.setTitle("ABERE-LANDARE-FRUTA LISTVIEW ARIKETA");
+
         ComboBox comboBilduma = new ComboBox();
         List<String> bildumak = List.of("abereak", "landareak", "frutak");
         ObservableList<String> bildumaList = FXCollections.observableArrayList(bildumak);
@@ -39,7 +41,7 @@ public class ListViewAbereak extends Application{
 
         comboBilduma.setOnAction(e -> {
             String iz = comboBilduma.getValue().toString();
-            listaBete(iz);
+            listaBete(iz);//ListView hau, klikatu dugun arabera beteko da. Hau da, abereak klikatuz gero, elefantea,untxia eta txakurra sartuko da
             listViewOfArgazki.getSelectionModel().selectedItemProperty().addListener(  (observable, oldValue, newValue) -> {
                 if (observable.getValue() == null) return;
                 String fitx = ((Argazki) observable.getValue()).getIrudia();
@@ -67,21 +69,21 @@ public class ListViewAbereak extends Application{
         bildumaMap = new HashMap<>();
 
         bildumaMap.put("abereak", List.of(
-                new Argazki("elefantea", "elefantea.jpeg"),
-                new Argazki("txakurra", "txakurra.jpeg"),
-                new Argazki("untxia", "untxia.png")
+                new Argazki("Elefantea", "elefantea.jpeg"),
+                new Argazki("Txakurra", "txakurra.jpeg"),
+                new Argazki("Untxia", "untxia.png")
         ));
 
         bildumaMap.put("landareak", List.of(
-                new Argazki("cactus", "cactus.png"),
-                new Argazki("landareBerdea", "landareberdea.jpeg"),
-                new Argazki("landareHoria", "landarehoria.jpeg")
+                new Argazki("Cactus", "cactus.png"),
+                new Argazki("LandareBerdea", "landareberdea.jpeg"),
+                new Argazki("LandareHoria", "landarehoria.jpeg")
         ));
 
         bildumaMap.put("frutak", List.of(
-                new Argazki("fresa", "fresa.jpeg"),
-                new Argazki("sandia", "sandia.png"),
-                new Argazki("sagarra", "sagarra.jpeg")
+                new Argazki("Fresa", "fresa.jpeg"),
+                new Argazki("Sandia", "sandia.png"),
+                new Argazki("Sagarra", "sagarra.jpeg")
         ));
     }
 
@@ -91,7 +93,8 @@ public class ListViewAbereak extends Application{
         return SwingFXUtils.toFXImage(reader, null);
     }
 
-    private void listaBete(String izena){
+    private void listaBete(String izena){//izenaren arabera(ABERE,LANDARE,FRUTA), listView-a beteko da
+        ObservableList<Argazki> argazkiList;
         argazkiList = FXCollections.observableArrayList();
         argazkiList.addAll(bildumaMap.get(izena));
         listViewOfArgazki.setItems(argazkiList);

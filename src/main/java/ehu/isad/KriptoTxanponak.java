@@ -1,4 +1,4 @@
-package ehu.isad.kriptoTxanpon;
+package ehu.isad;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -56,7 +56,7 @@ public class KriptoTxanponak extends Application{
 
         Gson gson = new Gson();
         Txanpona tx = gson.fromJson(inputLine, Txanpona.class);
-        //parametro bezala pasatutako txanponaren prezioa bueltatuko dugu
+        //parametro bezala pasatutako txanponaren prezioa bueltatuk dugu
         return tx.price;
     }
 

@@ -1,4 +1,4 @@
-package ehu.isad.listViewAriketa;
+package ehu.isad;
 
 public class Argazki {
 
